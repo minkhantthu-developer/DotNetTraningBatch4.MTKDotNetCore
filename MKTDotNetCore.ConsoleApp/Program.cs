@@ -2,6 +2,9 @@
 using MKTDotNetCore.ConsoleApp;
 
 AdoDotNetExample ado = new AdoDotNetExample();
-ado.Delete(6);
+//ado.Delete(6);
 ado.Read();
-//ado.Update(1,"Taw Thar ", "Zaya Min Htet", "Thone Gwa Thar");
+//ado.Update(1, "Taw Thar ", "Zaya Min Htet", "Thone Gwa Thar");
+
+//DapperExample dapperExample = new DapperExample();
+//dapperExample.Run();

@@ -13,19 +13,9 @@ namespace MKTDotNetCore.ConsoleApp
 {
     public class AdoDotNetExample
     {
-
-        private readonly SqlConnectionStringBuilder _sqlConnectionStringBuilder = new SqlConnectionStringBuilder
-        {
-            DataSource = "LAPTOP-TTIU8JF8",
-            InitialCatalog = "TestDB",
-            UserID = "sa",
-            Password = "Minkhantthu3367",
-            TrustServerCertificate =true
-        };
-
         public void Read()
         {
-            SqlConnection connection=new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
+            SqlConnection connection=new SqlConnection(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
             connection.Open();
             Console.WriteLine("Connection Open");
             string query = @"SELECT [BlogId]
@@ -51,7 +41,7 @@ namespace MKTDotNetCore.ConsoleApp
 
         public void Edit(int id)
         {
-            SqlConnection connection = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
+            SqlConnection connection = new SqlConnection(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
             connection.Open();
             Console.WriteLine("Connection Open");
             string query = @"SELECT [BlogId]
@@ -80,7 +70,7 @@ namespace MKTDotNetCore.ConsoleApp
 
         public void Create(string BlogTitle,string BlogAuthor,string BlogContent)
         {
-            SqlConnection connection = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
+            SqlConnection connection = new SqlConnection(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
             connection.Open();
             Console.WriteLine("Connection Open");
             string query = @"INSERT INTO [dbo].[Blog]
@@ -104,8 +94,7 @@ namespace MKTDotNetCore.ConsoleApp
 
         public void Update(int id,string BlogTitle,string BlogAuthor,string BlogContent)
         {
-            SqlConnection connection = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
-            connection.Open();
+            SqlConnection connection = new SqlConnection(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
             Console.WriteLine("Connection Open");
             string query = @"UPDATE [dbo].[Blog]
    SET [BlogTitle] = @BlogTitle
@@ -126,7 +115,7 @@ namespace MKTDotNetCore.ConsoleApp
 
         public void Delete(int id)
         {
-            SqlConnection connection = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
+            SqlConnection connection = new SqlConnection(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
             connection.Open();
             Console.WriteLine("Connection Open");
             string query = @"DELETE FROM [dbo].[Blog]
