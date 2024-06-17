@@ -1,5 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using MKTDotNetCore.ConsoleApp;
+using MKTDotNetCore.ConsoleApp.EfCoreExamples;
 
 //AdoDotNetExample ado = new AdoDotNetExample();
 //ado.Delete(6);

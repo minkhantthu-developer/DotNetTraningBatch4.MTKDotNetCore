@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.Data.SqlClient;
+using MKTDotNetCore.ConsoleApp.Services;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,13 +10,13 @@ using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MKTDotNetCore.ConsoleApp
+namespace MKTDotNetCore.ConsoleApp.AdoDotNetExamples
 {
     public class AdoDotNetExample
     {
         public void Read()
         {
-            SqlConnection connection=new SqlConnection(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
+            SqlConnection connection = new SqlConnection(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
             connection.Open();
             Console.WriteLine("Connection Open");
             string query = @"SELECT [BlogId]
@@ -23,13 +24,13 @@ namespace MKTDotNetCore.ConsoleApp
       ,[BlogAuthor]
       ,[BlogContent]
   FROM [dbo].[Blog]";
-            SqlCommand cmd=new SqlCommand(query, connection);
+            SqlCommand cmd = new SqlCommand(query, connection);
             SqlDataAdapter adpt = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             adpt.Fill(dt);
             connection.Close();
             Console.WriteLine("Connection Close");
-            foreach(DataRow dr in dt.Rows)
+            foreach (DataRow dr in dt.Rows)
             {
                 Console.WriteLine("BlogID => " + dr["BlogId"]);
                 Console.WriteLine("BlogTitle => " + dr["BlogTitle"]);
@@ -68,7 +69,7 @@ namespace MKTDotNetCore.ConsoleApp
             Console.WriteLine("BlogContent => " + dr["BlogContent"]);
         }
 
-        public void Create(string BlogTitle,string BlogAuthor,string BlogContent)
+        public void Create(string BlogTitle, string BlogAuthor, string BlogContent)
         {
             SqlConnection connection = new SqlConnection(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
             connection.Open();
@@ -92,7 +93,7 @@ namespace MKTDotNetCore.ConsoleApp
             Console.WriteLine(message);
         }
 
-        public void Update(int id,string BlogTitle,string BlogAuthor,string BlogContent)
+        public void Update(int id, string BlogTitle, string BlogAuthor, string BlogContent)
         {
             SqlConnection connection = new SqlConnection(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
             Console.WriteLine("Connection Open");
@@ -106,7 +107,7 @@ namespace MKTDotNetCore.ConsoleApp
             cmd.Parameters.AddWithValue("@BlogAuthor", BlogAuthor);
             cmd.Parameters.AddWithValue("@BlogContent", BlogContent);
             cmd.Parameters.AddWithValue("@BlogId", id);
-            int result=cmd.ExecuteNonQuery();
+            int result = cmd.ExecuteNonQuery();
             connection.Close();
             Console.WriteLine("Connection Close");
             string message = result > 0 ? "Succcessfully Update" : "Update Fail";

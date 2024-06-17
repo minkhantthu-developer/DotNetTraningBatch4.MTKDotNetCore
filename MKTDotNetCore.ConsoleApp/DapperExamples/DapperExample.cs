@@ -1,6 +1,8 @@
 ﻿
 using Dapper;
 using Microsoft.Data.SqlClient;
+using MKTDotNetCore.ConsoleApp.Dtos;
+using MKTDotNetCore.ConsoleApp.Services;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MKTDotNetCore.ConsoleApp;
+namespace MKTDotNetCore.ConsoleApp.DapperExamples;
 
 public class DapperExample
 {
@@ -26,12 +28,12 @@ public class DapperExample
       ,[BlogAuthor]
       ,[BlogContent]
   FROM [dbo].[Blog]";
-        List<BlogDto> lst=db.Query<BlogDto>(query).ToList();
-        foreach(var item in lst)
+        List<BlogDto> lst = db.Query<BlogDto>(query).ToList();
+        foreach (var item in lst)
         {
             Console.WriteLine("BlogId => " + item.BlogId);
             Console.WriteLine("BlogTitle => " + item.BlogTitle);
-            Console.WriteLine("BlogAuthor => " + item.BlogAuthor); 
+            Console.WriteLine("BlogAuthor => " + item.BlogAuthor);
             Console.WriteLine("BlogContent => " + item.BlogContent);
             Console.WriteLine("------------");
         }
@@ -46,7 +48,7 @@ public class DapperExample
       ,[BlogContent]
   FROM [dbo].[Blog] Where [BlogId]=@BlogId";
         var item = db.Query<BlogDto>(query, new BlogDto { BlogId = id }).FirstOrDefault();
-        if(item is null)
+        if (item is null)
         {
             Console.WriteLine("No data found");
             return;
@@ -57,7 +59,7 @@ public class DapperExample
         Console.WriteLine("BlogContent => " + item.BlogContent);
     }
 
-    private void Create(string title,string author,string content)
+    private void Create(string title, string author, string content)
     {
         BlogDto blog = new BlogDto
         {
@@ -79,7 +81,7 @@ public class DapperExample
         Console.WriteLine(message);
     }
 
-    private void Update(int id,string title,string author,string content)
+    private void Update(int id, string title, string author, string content)
     {
         BlogDto blog = new BlogDto
         {
@@ -94,7 +96,7 @@ public class DapperExample
       ,[BlogContent] = @BlogContent
  WHERE [BlogId]=@BlogId";
         using IDbConnection db = new SqlConnection(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
-        int result=db.Execute(query, blog);
+        int result = db.Execute(query, blog);
         string message = result > 0 ? "Successfully Update" : "Fail to Update";
         Console.WriteLine(message);
     }

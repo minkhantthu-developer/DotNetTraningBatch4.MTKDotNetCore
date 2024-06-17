@@ -6,12 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MKTDotNetCore.ConsoleApp
+namespace MKTDotNetCore.ConsoleApp.Dtos
 {
     [Table("Blog")]
     public class BlogDto
     {
-       [Key] public int BlogId { get; set; }
+        [Key] public int BlogId { get; set; }
         public string? BlogTitle { get; set; }
         public string? BlogAuthor { get; set; }
         public string? BlogContent { get; set; }

@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MKTDotNetCore.ConsoleApp.Dtos;
 
-namespace MKTDotNetCore.ConsoleApp
+namespace MKTDotNetCore.ConsoleApp.EfCoreExamples
 {
     public class EfCoreExample
-    { 
+    {
 
         public void Run()
         {
@@ -32,8 +33,8 @@ namespace MKTDotNetCore.ConsoleApp
         private void Edit(int id)
         {
             AppDbContext db = new AppDbContext();
-            var item = db.blogs.FirstOrDefault(x=>x.BlogId==id);    
-            if(item is null)
+            var item = db.blogs.FirstOrDefault(x => x.BlogId == id);
+            if (item is null)
             {
                 Console.WriteLine("No data found");
                 return;
@@ -44,7 +45,7 @@ namespace MKTDotNetCore.ConsoleApp
             Console.WriteLine("BlogContent => " + item.BlogContent);
         }
 
-        private void Create(string title,string author,string content)
+        private void Create(string title, string author, string content)
         {
             AppDbContext db = new AppDbContext();
             BlogDto blog = new BlogDto
@@ -59,24 +60,24 @@ namespace MKTDotNetCore.ConsoleApp
             Console.WriteLine(message);
         }
 
-        private void Update(int id,string title,string author,string content)
+        private void Update(int id, string title, string author, string content)
         {
             AppDbContext db = new AppDbContext();
-            var item =  db.blogs.FirstOrDefault(x => x.BlogId == id);
-            if(item is null)
+            var item = db.blogs.FirstOrDefault(x => x.BlogId == id);
+            if (item is null)
             {
                 Console.WriteLine("No data found");
                 return;
             }
             item.BlogTitle = title;
-            item.BlogAuthor= author;
+            item.BlogAuthor = author;
             item.BlogContent = content;
             int result = db.SaveChanges();
             string message = result > 0 ? "Successfully Update" : "Fail to Update";
             Console.WriteLine(message);
         }
 
-        private  void Delete(int id)
+        private void Delete(int id)
         {
             AppDbContext db = new AppDbContext();
             var item = db.blogs.FirstOrDefault(x => x.BlogId == id);
