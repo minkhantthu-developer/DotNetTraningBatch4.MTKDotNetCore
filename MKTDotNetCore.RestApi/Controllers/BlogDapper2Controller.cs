@@ -3,14 +3,17 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using MKTDotNetCore.RestApi.Models;
+using MKTDotNetCore.Shared;
 using System.Data;
 
 namespace MKTDotNetCore.RestApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BlogDapperController : ControllerBase
+    public class BlogDapper2Controller : ControllerBase
     {
+        private readonly DapperService _dapperService = new DapperService(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
+
         [HttpGet]
         public IActionResult GetBlogs()
         {
@@ -19,10 +22,10 @@ namespace MKTDotNetCore.RestApi.Controllers
       ,[BlogAuthor]
       ,[BlogContent]
   FROM [dbo].[Blog]";
-            using IDbConnection db = new SqlConnection(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
-            List<BlogModel> lst = db.Query<BlogModel>(query).ToList();
+            var lst = _dapperService.Query<BlogModel>(query);
             return Ok(lst);
         }
+
 
         [HttpGet("{id}")]
         public IActionResult GetBlog(int id)
@@ -46,8 +49,7 @@ namespace MKTDotNetCore.RestApi.Controllers
            (@BlogTitle
            ,@BlogAuthor
            ,@BlogContent)";
-            using IDbConnection db = new SqlConnection(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
-            int result = db.Execute(query, blog);
+            int result = _dapperService.Execute(query, blog);
             string message = result > 0 ? "Successfully Save" : "Saving Fail";
             return Ok(message);
         }
@@ -64,8 +66,7 @@ namespace MKTDotNetCore.RestApi.Controllers
             if (item is null)
                 return NotFound("No data found");
             blog.BlogId = item.BlogId;
-            using IDbConnection db = new SqlConnection(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
-            int result= db.Execute(query, blog);
+            int result = _dapperService.Execute(query, blog);
             string message = result > 0 ? "Successfully Update" : "Update Fail";
             return Ok(message);
         }
@@ -82,11 +83,11 @@ namespace MKTDotNetCore.RestApi.Controllers
             {
                 condition += " [BlogTitle] = @BlogTitle, ";
             }
-            if(!string.IsNullOrEmpty(blog.BlogAuthor))
+            if (!string.IsNullOrEmpty(blog.BlogAuthor))
             {
                 condition += " [BlogAuthor] = @BlogAuthor, ";
             }
-            if(!string.IsNullOrEmpty(blog.BlogContent))
+            if (!string.IsNullOrEmpty(blog.BlogContent))
             {
                 condition += " [BlogContent] = @BlogContent, ";
             }
@@ -98,8 +99,7 @@ namespace MKTDotNetCore.RestApi.Controllers
             string query = $@"UPDATE [dbo].[Blog]
    SET {condition}
  WHERE [BlogId]=@BlogId";
-            using IDbConnection db = new SqlConnection(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
-            int result = db.Execute(query, blog);
+            int result = _dapperService.Execute(query, blog);
             string message = result > 0 ? "Successfully Update" : "Update Fail";
             return Ok(message);
         }
@@ -110,13 +110,12 @@ namespace MKTDotNetCore.RestApi.Controllers
             string query = @"DELETE FROM [dbo].[Blog]
       WHERE [BlogId]=@BlogId";
             var item = FindById(id);
-            if(item is null)
+            if (item is null)
             {
                 return NotFound("No data found");
             }
-            using IDbConnection db=new SqlConnection(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
-            int result=db.Execute(query,new BlogModel { BlogId=item.BlogId});
-            string message = result > 0 ? "Successfully Delete":"Delete Fail";
+            int result = _dapperService.Execute(query, new BlogModel { BlogId = item.BlogId });
+            string message = result > 0 ? "Successfully Delete" : "Delete Fail";
             return Ok(message);
         }
 
@@ -127,8 +126,7 @@ namespace MKTDotNetCore.RestApi.Controllers
       ,[BlogAuthor]
       ,[BlogContent]
   FROM [dbo].[Blog] Where [BlogId]=@BlogId";
-            using IDbConnection db = new SqlConnection(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
-            var item = db.Query<BlogModel>(query, new BlogModel { BlogId = id }).FirstOrDefault();
+           var item=_dapperService.QueryFirstOrDefault<BlogModel>(query,new BlogModel { BlogId=id});
             return item;
         }
     }
