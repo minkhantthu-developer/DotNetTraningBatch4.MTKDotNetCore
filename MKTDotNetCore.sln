@@ -10,9 +10,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MKTDotNetCore.RestApi", "MKTDotNetCore.RestApi\MKTDotNetCore.RestApi.csproj", "{C9DF3BF1-E4EF-40D9-8542-B7D87C0F34C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MKTDotNetCore.RestApi", "MKTDotNetCore.RestApi\MKTDotNetCore.RestApi.csproj", "{C9DF3BF1-E4EF-40D9-8542-B7D87C0F34C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MKTDotNetCore.Shared", "MKTDotNetCore.Shared\MKTDotNetCore.Shared.csproj", "{7E845ED7-973E-4506-B8A5-D4F165A97D97}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MKTDotNetCore.Shared", "MKTDotNetCore.Shared\MKTDotNetCore.Shared.csproj", "{7E845ED7-973E-4506-B8A5-D4F165A97D97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MKTDotNetCore.RestApiWithNLayer", "MKTDotNetCore.RestApiWithNLayer\MKTDotNetCore.RestApiWithNLayer.csproj", "{2E79EC25-BC9D-4049-8FE4-5E85C820F88A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +34,10 @@ Global
 		{7E845ED7-973E-4506-B8A5-D4F165A97D97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E845ED7-973E-4506-B8A5-D4F165A97D97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E845ED7-973E-4506-B8A5-D4F165A97D97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E79EC25-BC9D-4049-8FE4-5E85C820F88A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E79EC25-BC9D-4049-8FE4-5E85C820F88A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E79EC25-BC9D-4049-8FE4-5E85C820F88A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E79EC25-BC9D-4049-8FE4-5E85C820F88A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

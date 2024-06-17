@@ -1,0 +1,6 @@
+@MKTDotNetCore.RestApiWithNLayer_HostAddress = http://localhost:5128
+
+GET {{MKTDotNetCore.RestApiWithNLayer_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
