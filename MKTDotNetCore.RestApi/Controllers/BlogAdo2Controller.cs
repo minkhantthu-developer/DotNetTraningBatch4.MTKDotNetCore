@@ -1,5 +1,4 @@
-﻿using Dapper;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using MKTDotNetCore.RestApi.Models;
@@ -10,9 +9,9 @@ namespace MKTDotNetCore.RestApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BlogDapper2Controller : ControllerBase
+    public class BlogAdo2Controller : ControllerBase
     {
-        private readonly DapperService _dapperService = new DapperService(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
+        private readonly AdoDotNetService _adoService = new AdoDotNetService(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
 
         [HttpGet]
         public IActionResult GetBlogs()
@@ -22,7 +21,7 @@ namespace MKTDotNetCore.RestApi.Controllers
       ,[BlogAuthor]
       ,[BlogContent]
   FROM [dbo].[Blog]";
-            var lst = _dapperService.Query<BlogModel>(query);
+           var lst = _adoService.Query<BlogModel>(query);
             return Ok(lst);
         }
 
@@ -32,13 +31,13 @@ namespace MKTDotNetCore.RestApi.Controllers
             var item = FindById(id);
             if(item is null)
             {
-                return NotFound("No data found");
+                return NotFound("No data found ");
             }
             return Ok(item);
         }
 
         [HttpPost]
-        public IActionResult PostBlog(BlogModel blog)
+        public IActionResult CreateBlog(BlogModel blog)
         {
             string query = @"INSERT INTO [dbo].[Blog]
            ([BlogTitle]
@@ -48,73 +47,88 @@ namespace MKTDotNetCore.RestApi.Controllers
            (@BlogTitle
            ,@BlogAuthor
            ,@BlogContent)";
-            int result = _dapperService.Execute(query, blog);
+            List<SqlParameter> parms = new List<SqlParameter>
+            {
+                new("@BlogTitle",blog.BlogTitle),
+                new("@BlogAuthor",blog.BlogAuthor),
+                new("@BlogContent",blog.BlogContent),
+            };
+            int result = _adoService.Execute(query, parms.ToArray());
             string message = result > 0 ? "Successfully Save" : "Saving Fail";
             return Ok(message);
         }
 
         [HttpPut("{id}")]
-        public IActionResult PutBlog(int id, BlogModel blog)
+        public IActionResult PutBlog(int id,BlogModel blog)
         {
+            var item = FindById(id);
+            if (item is null)
+            {
+                return NotFound("No data found ");
+            }
             string query = @"UPDATE [dbo].[Blog]
    SET [BlogTitle] = @BlogTitle
       ,[BlogAuthor] = @BlogAuthor
       ,[BlogContent] = @BlogContent
  WHERE [BlogId]=@BlogId";
-            var item = FindById(id);
-            if (item is null)
-                return NotFound("No data found");
-            blog.BlogId = item.BlogId;
-            int result = _dapperService.Execute(query, blog);
-            string message = result > 0 ? "Successfully Update" : "Update Fail";
+            List<SqlParameter> parms = new List<SqlParameter>
+            {
+                new("@BlogTitle",blog.BlogTitle),
+                new("@BlogAuthor",blog.BlogAuthor),
+                new("@BlogContent",blog.BlogContent),
+                new("@BlogId",item.BlogId)
+            };
+            int result=_adoService.Execute(query,parms.ToArray());
+            string message = result > 0 ? "Successfully Update" : "Updating Fail";
             return Ok(message);
         }
 
         [HttpPatch("{id}")]
-        public IActionResult PatchBlog(int id, BlogModel blog)
+        public IActionResult PatchBlog(int id,BlogModel blog)
         {
             var item = FindById(id);
             if (item is null)
-                return NotFound("No data found");
-            blog.BlogId = item.BlogId;
+            {
+                return NotFound("No data found ");
+            }
+            List<SqlParameter> parms = new List<SqlParameter>();
             string condition = string.Empty;
             if (!string.IsNullOrEmpty(blog.BlogTitle))
             {
                 condition += " [BlogTitle] = @BlogTitle, ";
+                parms.Add(new("@BlogTitle", blog.BlogTitle)); 
             }
             if (!string.IsNullOrEmpty(blog.BlogAuthor))
             {
                 condition += " [BlogAuthor] = @BlogAuthor, ";
+                parms.Add(new("@BlogAuthor", blog.BlogAuthor));
             }
             if (!string.IsNullOrEmpty(blog.BlogContent))
             {
                 condition += " [BlogContent] = @BlogContent, ";
+                parms.Add(new("@BlogContent", blog.BlogContent));
             }
             if (condition.Length == 0)
             {
                 return BadRequest("No data to update");
             }
+            parms.Add(new("@BlogId", item.BlogId));
             condition = condition.Substring(0, condition.Length - 2);
             string query = $@"UPDATE [dbo].[Blog]
    SET {condition}
  WHERE [BlogId]=@BlogId";
-            int result = _dapperService.Execute(query, blog);
-            string message = result > 0 ? "Successfully Update" : "Update Fail";
+            int result = _adoService.Execute(query, parms.ToArray());
+            string message = result > 0 ? "Successfully Update" : "Updating Fail";
             return Ok(message);
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Deleteblog(int id)
+        public IActionResult DeleteBlog(int id)
         {
             string query = @"DELETE FROM [dbo].[Blog]
       WHERE [BlogId]=@BlogId";
-            var item = FindById(id);
-            if (item is null)
-            {
-                return NotFound("No data found");
-            }
-            int result = _dapperService.Execute(query, new BlogModel { BlogId = item.BlogId });
-            string message = result > 0 ? "Successfully Delete" : "Delete Fail";
+            int result=_adoService.Execute(query,new SqlParameter("@BlogId",id));
+            string message = result > 0 ? "Successfully Delete" : "Deleting Fail";
             return Ok(message);
         }
 
@@ -125,7 +139,7 @@ namespace MKTDotNetCore.RestApi.Controllers
       ,[BlogAuthor]
       ,[BlogContent]
   FROM [dbo].[Blog] Where [BlogId]=@BlogId";
-           var item=_dapperService.QueryFirstOrDefault<BlogModel>(query,new BlogModel { BlogId=id});
+            var item = _adoService.QueryFirstOrDefault<BlogModel>(query, new SqlParameter("@BlogId", id));
             return item;
         }
     }
