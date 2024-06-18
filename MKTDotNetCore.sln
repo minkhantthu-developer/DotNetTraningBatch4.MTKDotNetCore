@@ -14,9 +14,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MKTDotNetCore.RestApi", "MK
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MKTDotNetCore.Shared", "MKTDotNetCore.Shared\MKTDotNetCore.Shared.csproj", "{7E845ED7-973E-4506-B8A5-D4F165A97D97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MKTDotNetCore.RestApiWithNLayer", "MKTDotNetCore.RestApiWithNLayer\MKTDotNetCore.RestApiWithNLayer.csproj", "{2E79EC25-BC9D-4049-8FE4-5E85C820F88A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MKTDotNetCore.RestApiWithNLayer", "MKTDotNetCore.RestApiWithNLayer\MKTDotNetCore.RestApiWithNLayer.csproj", "{2E79EC25-BC9D-4049-8FE4-5E85C820F88A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MKTDotNetCore.ConsoleAppHttpClient", "MKTDotNetCore.ConsoleAppHttpClient\MKTDotNetCore.ConsoleAppHttpClient.csproj", "{DD7D7770-B30E-40A1-BE6A-D4E17499ECD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MKTDotNetCore.ConsoleAppHttpClient", "MKTDotNetCore.ConsoleAppHttpClient\MKTDotNetCore.ConsoleAppHttpClient.csproj", "{DD7D7770-B30E-40A1-BE6A-D4E17499ECD7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MKTDotNetCore.ConsoleAppHttpClientExample", "MKTDotNetCore.ConsoleAppHttpClientExample\MKTDotNetCore.ConsoleAppHttpClientExample.csproj", "{0FE4EEDF-94EF-4040-840C-9E8D74445629}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +46,10 @@ Global
 		{DD7D7770-B30E-40A1-BE6A-D4E17499ECD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD7D7770-B30E-40A1-BE6A-D4E17499ECD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD7D7770-B30E-40A1-BE6A-D4E17499ECD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FE4EEDF-94EF-4040-840C-9E8D74445629}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FE4EEDF-94EF-4040-840C-9E8D74445629}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FE4EEDF-94EF-4040-840C-9E8D74445629}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FE4EEDF-94EF-4040-840C-9E8D74445629}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
