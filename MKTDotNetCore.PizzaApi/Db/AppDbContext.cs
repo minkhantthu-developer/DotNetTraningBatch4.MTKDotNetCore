@@ -74,22 +74,41 @@ namespace MKTDotNetCore.PizzaApi.Db
     [Table("Tbl_PizzaOrderDetail")]
     public class PizzaOrderDetailModel
     {
-       [Key] public int PizzaOrderDetailId { get; set; }
+        [Key] public int PizzaOrderDetailId { get; set; }
         public string? PizzaOrderInvoiceCode { get; set; }
         public int PizzaExtraId { get; set; }
     }
 
     public class OrderResponse
     {
-        public string? InvoiceNo { get; set; }   
+        public string? InvoiceNo { get; set; }
         public string? messaage { get; set; }
         public decimal TotalAmount { get; set; }
     }
 
     public class OrderDetailResponseModel
     {
-        public PizzaOrderModel? pizzaOrder { get; set; }
-        public List<PizzaOrderDetailModel>? lstPizzaOrderDetail { get; set; }
+        public PizzaOrderHeadModel? pizzaOrder { get; set; }
+        public List<PizzaOrderDetail>? lstPizzaOrderDetail { get; set; }
+    }
+
+    public class PizzaOrderHeadModel
+    {
+        public int PizzaOrderId { get; set; }
+        public string? PizzaOrderInvoiceCode { get; set; }
+        public decimal Total { get; set; }
+        public int PizzaId { get; set; }
+        public string? Pizza { get; set; }
+        public decimal Price { get; set; }
+    }
+
+    public class PizzaOrderDetail
+    {
+        public int PizzaOrderDetailId { get; set; }
+        public string? PizzaOrderInvoiceCode { get; set; }
+        public int PizzaExtraId { get; set; }
+        public string? PizzaExtra { get; set; }
+        public decimal Price { get; set; }
     }
 
 }
