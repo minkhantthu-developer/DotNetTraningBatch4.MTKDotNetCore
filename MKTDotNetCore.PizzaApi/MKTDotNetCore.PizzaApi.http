@@ -1,0 +1,6 @@
+@MKTDotNetCore.PizzaApi_HostAddress = http://localhost:5144
+
+GET {{MKTDotNetCore.PizzaApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -18,9 +18,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MKTDotNetCore.RestApiWithNL
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MKTDotNetCore.ConsoleAppHttpClient", "MKTDotNetCore.ConsoleAppHttpClient\MKTDotNetCore.ConsoleAppHttpClient.csproj", "{DD7D7770-B30E-40A1-BE6A-D4E17499ECD7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MKTDotNetCore.ConsoleAppHttpClientExample", "MKTDotNetCore.ConsoleAppHttpClientExample\MKTDotNetCore.ConsoleAppHttpClientExample.csproj", "{0FE4EEDF-94EF-4040-840C-9E8D74445629}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MKTDotNetCore.ConsoleAppHttpClientExample", "MKTDotNetCore.ConsoleAppHttpClientExample\MKTDotNetCore.ConsoleAppHttpClientExample.csproj", "{0FE4EEDF-94EF-4040-840C-9E8D74445629}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MKTDotNetCore.ConsoleAppRestClientExample", "MKTDotNetCore.ConsoleAppRestClientExample\MKTDotNetCore.ConsoleAppRestClientExample.csproj", "{4BF0CC9B-8101-450D-9582-3037D76CA2FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MKTDotNetCore.ConsoleAppRestClientExample", "MKTDotNetCore.ConsoleAppRestClientExample\MKTDotNetCore.ConsoleAppRestClientExample.csproj", "{4BF0CC9B-8101-450D-9582-3037D76CA2FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MKTDotNetCore.PizzaApi", "MKTDotNetCore.PizzaApi\MKTDotNetCore.PizzaApi.csproj", "{783F4CAA-F655-4CB5-9458-ADC6E1045D17}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,6 +58,10 @@ Global
 		{4BF0CC9B-8101-450D-9582-3037D76CA2FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BF0CC9B-8101-450D-9582-3037D76CA2FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BF0CC9B-8101-450D-9582-3037D76CA2FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{783F4CAA-F655-4CB5-9458-ADC6E1045D17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{783F4CAA-F655-4CB5-9458-ADC6E1045D17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{783F4CAA-F655-4CB5-9458-ADC6E1045D17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{783F4CAA-F655-4CB5-9458-ADC6E1045D17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
