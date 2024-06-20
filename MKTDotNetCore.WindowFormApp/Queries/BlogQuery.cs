@@ -16,5 +16,11 @@ namespace MKTDotNetCore.WindowFormApp.Queries
            (@BlogTitle
            ,@BlogAuthor
            ,@BlogContent)";
+
+        public static string BlogReadQuery = @"SELECT [BlogId]
+      ,[BlogTitle]
+      ,[BlogAuthor]
+      ,[BlogContent]
+  FROM [dbo].[Blog]";
     }
 }
