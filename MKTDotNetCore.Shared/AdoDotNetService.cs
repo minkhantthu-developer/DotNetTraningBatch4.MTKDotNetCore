@@ -46,7 +46,7 @@ namespace MKTDotNetCore.Shared
             connection.Close();
             string jsonStr= JsonConvert.SerializeObject(dt);
             var lst=JsonConvert.DeserializeObject<List<T>>(jsonStr);
-            if (lst.Count == 0)
+            if (lst!.Count == 0)
             {
                 return default(T);
             }

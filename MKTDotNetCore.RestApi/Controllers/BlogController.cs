@@ -31,7 +31,7 @@ namespace MKTDotNetCore.RestApi.Controllers
             var item = await _db.blogs.FirstOrDefaultAsync(x => x.BlogId == id);
             if (item is null)
             {
-                return NotFound("No data found");
+                return NotFound(new ResponseModel { IsSuccess = false, message = "No data found" });
             }
             return Ok(item);
         }
@@ -40,8 +40,18 @@ namespace MKTDotNetCore.RestApi.Controllers
         public async Task<IActionResult> Post(BlogModel blog)
         {
             _db.blogs.Add(blog);
-            string message = await _db.SaveChangesAsync() > 0 ? "Successfully Save" : "Fail to save";
-            return Ok(message);
+            int result = await _db.SaveChangesAsync();
+            var model = result > 0 ?
+                new ResponseModel
+                {
+                    IsSuccess = true,
+                    message = "Successfully Save"
+                } : new ResponseModel
+                {
+                    IsSuccess = false,
+                    message = "fail to Create"
+                };
+            return Ok(model);
         }
 
         [HttpPut("{id}")]
@@ -50,13 +60,15 @@ namespace MKTDotNetCore.RestApi.Controllers
             var item = await _db.blogs.FirstOrDefaultAsync(x => x.BlogId == id);
             if (item is null)
             {
-                return NotFound("No data found");
+                return NotFound(new ResponseModel { IsSuccess = false, message = "No data found" });
             }
             item.BlogTitle = blog.BlogTitle;
             item.BlogAuthor = blog.BlogAuthor;
             item.BlogContent = blog.BlogContent;
-            string message = await _db.SaveChangesAsync() > 0 ? "Successfully Update" : "Update Fail";
-            return Ok(message);
+            int result = await _db.SaveChangesAsync();
+            var model = result > 0 ? new ResponseModel { IsSuccess = true, message = "Successfully Update" } :
+                                    new ResponseModel { IsSuccess = false, message = "Successfully Update" };
+            return Ok(model);
         }
 
         [HttpPatch("{id}")]
@@ -65,7 +77,7 @@ namespace MKTDotNetCore.RestApi.Controllers
             var item = await _db.blogs.FirstOrDefaultAsync(x => x.BlogId == id);
             if (item is null)
             {
-                return NotFound("No data found");
+                return NotFound(new ResponseModel { IsSuccess = false, message = "No data found" });
             }
             if (!string.IsNullOrEmpty(blog.BlogTitle))
             {
@@ -79,8 +91,10 @@ namespace MKTDotNetCore.RestApi.Controllers
             {
                 item.BlogContent = blog.BlogContent;
             }
-            string message = await _db.SaveChangesAsync() > 0 ? "Successfully Update" : "Update Fail";
-            return Ok(message);
+            int result = await _db.SaveChangesAsync();
+            var model = result > 0 ? new ResponseModel { IsSuccess = true, message = "Successfully Update" } :
+                                     new ResponseModel { IsSuccess = false, message = "Successfully Update" };
+            return Ok(model);
         }
 
         [HttpDelete("{id}")]
@@ -89,11 +103,13 @@ namespace MKTDotNetCore.RestApi.Controllers
             var item = await _db.blogs.FirstOrDefaultAsync(x => x.BlogId == id);
             if (item is null)
             {
-                return NotFound("No data found");
+                return NotFound(new ResponseModel { IsSuccess = false, message = "No data found" });
             }
             _db.blogs.Remove(item);
-            string message = await _db.SaveChangesAsync() > 0 ? "Successfully Delete" : "Delete Fail";
-            return Ok(message);
+            int result = await _db.SaveChangesAsync();
+            var model = result > 0 ? new ResponseModel { IsSuccess = true, message = "Successfully Delete" } :
+                                     new ResponseModel { IsSuccess = false, message = "Fail to Delete" };
+            return Ok(model);
         }
     }
 }

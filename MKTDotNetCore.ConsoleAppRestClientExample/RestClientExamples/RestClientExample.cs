@@ -1,4 +1,4 @@
-﻿
+﻿using MKTDotNetCore.ConsoleAppRestClientExample.Models;
 using Newtonsoft.Json;
 using RestSharp;
 using System;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace MKTDotNetCore.ConsoleAppRestClientExample
+namespace MKTDotNetCore.ConsoleAppRestClientExample.RestClientExamples
 {
     public class RestClientExample
     {
@@ -24,7 +24,7 @@ namespace MKTDotNetCore.ConsoleAppRestClientExample
 
         public async Task ReadAsync()
         {
-            RestRequest request = new RestRequest(_blogEndPoint,Method.Get);
+            RestRequest request = new RestRequest(_blogEndPoint, Method.Get);
             var response = await _client.ExecuteAsync(request);
             if (!response.IsSuccessStatusCode)
             {
@@ -32,7 +32,7 @@ namespace MKTDotNetCore.ConsoleAppRestClientExample
                 Console.WriteLine(message);
                 return;
             }
-            string jsonStr =  response.Content!;
+            string jsonStr = response.Content!;
             var lst = JsonConvert.DeserializeObject<List<BlogModel>>(jsonStr);
             foreach (var item in lst!)
             {
@@ -46,7 +46,7 @@ namespace MKTDotNetCore.ConsoleAppRestClientExample
 
         public async Task EditAsync(int id)
         {
-            RestRequest restRequest=new RestRequest($"{_blogEndPoint}/{id}",Method.Get);
+            RestRequest restRequest = new RestRequest($"{_blogEndPoint}/{id}", Method.Get);
             var response = await _client.ExecuteAsync(restRequest);
             if (!response.IsSuccessStatusCode)
             {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MKTDotNetCore.ConsoleAppRestClientExample;
+namespace MKTDotNetCore.ConsoleAppRestClientExample.Models;
 
 public class BlogModel
 {
