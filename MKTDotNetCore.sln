@@ -26,7 +26,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MKTDotNetCore.PizzaApi", "M
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MKTDotNetCore.ConsoleAppRefitExample", "MKTDotNetCore.ConsoleAppRefitExample\MKTDotNetCore.ConsoleAppRefitExample.csproj", "{CEB77D2F-6C45-4970-B08A-7693DEAE2444}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MKTDotNetCore.WindowFormApp", "MKTDotNetCore.WindowFormApp\MKTDotNetCore.WindowFormApp.csproj", "{3F006A7D-3653-4A83-8088-924737827B74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MKTDotNetCore.WindowFormApp", "MKTDotNetCore.WindowFormApp\MKTDotNetCore.WindowFormApp.csproj", "{3F006A7D-3653-4A83-8088-924737827B74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MKTDotNetCore.WinFormsAppSqlInjection", "MKTDotNetCore.WinFormsAppSqlInjection\MKTDotNetCore.WinFormsAppSqlInjection.csproj", "{845EA35D-CB8D-41DF-A5D4-C9F7681369B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -74,6 +76,10 @@ Global
 		{3F006A7D-3653-4A83-8088-924737827B74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F006A7D-3653-4A83-8088-924737827B74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F006A7D-3653-4A83-8088-924737827B74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{845EA35D-CB8D-41DF-A5D4-C9F7681369B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{845EA35D-CB8D-41DF-A5D4-C9F7681369B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{845EA35D-CB8D-41DF-A5D4-C9F7681369B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{845EA35D-CB8D-41DF-A5D4-C9F7681369B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
