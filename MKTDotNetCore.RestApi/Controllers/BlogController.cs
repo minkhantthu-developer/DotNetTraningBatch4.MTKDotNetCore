@@ -13,9 +13,9 @@ namespace MKTDotNetCore.RestApi.Controllers
     {
         private readonly AppDbContext _db;
 
-        public BlogController()
+        public BlogController(AppDbContext db)
         {
-            _db = new AppDbContext();
+            _db = db;
         }
 
         [HttpGet]

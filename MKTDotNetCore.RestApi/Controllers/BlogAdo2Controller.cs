@@ -11,7 +11,12 @@ namespace MKTDotNetCore.RestApi.Controllers
     [ApiController]
     public class BlogAdo2Controller : ControllerBase
     {
-        private readonly AdoDotNetService _adoService = new AdoDotNetService(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
+        private readonly AdoDotNetService _adoService;
+        
+        public BlogAdo2Controller(AdoDotNetService adoService)
+        {
+            _adoService = adoService;
+        }
 
         [HttpGet]
         public IActionResult GetBlogs()

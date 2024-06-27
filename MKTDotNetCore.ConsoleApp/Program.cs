@@ -1,5 +1,11 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using MKTDotNetCore.ConsoleApp.AdoDotNetExamples;
+using MKTDotNetCore.ConsoleApp.DapperExamples;
 using MKTDotNetCore.ConsoleApp.EfCoreExamples;
+using MKTDotNetCore.ConsoleApp.Services;
 
 //AdoDotNetExample ado = new AdoDotNetExample();
 //ado.Delete(6);
@@ -8,6 +14,16 @@ using MKTDotNetCore.ConsoleApp.EfCoreExamples;
 
 //DapperExample dapperExample = new DapperExample();
 //dapperExample.Run();
-
-EfCoreExample efCore = new EfCoreExample();
-efCore.Run();
+string connectionString = ConnectionStrings.SqlConnectionStringBuilder.ConnectionString;
+SqlConnectionStringBuilder sqlConnectionString = ConnectionStrings.SqlConnectionStringBuilder;
+var serviceProvider = new ServiceCollection()
+    .AddScoped(n => new AdoDotNetExample(sqlConnectionString))
+    .AddScoped(n => new DapperExample(sqlConnectionString))
+    .AddDbContext<AppDbContext>(opt =>
+    {
+        opt.UseSqlServer(connectionString);
+    })
+    .AddScoped<EfCoreExample>()
+    .BuildServiceProvider();
+var dapperExample=serviceProvider.GetRequiredService<DapperExample>();
+dapperExample.Run();

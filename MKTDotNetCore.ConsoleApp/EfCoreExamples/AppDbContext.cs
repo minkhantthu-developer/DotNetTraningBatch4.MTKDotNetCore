@@ -11,9 +11,8 @@ namespace MKTDotNetCore.ConsoleApp.EfCoreExamples
 {
     public class AppDbContext : DbContext
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public AppDbContext(DbContextOptions options) : base(options)
         {
-            optionsBuilder.UseSqlServer(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
         }
 
         public DbSet<BlogDto> blogs { get; set; }

@@ -12,7 +12,12 @@ namespace MKTDotNetCore.RestApi.Controllers
     [ApiController]
     public class BlogDapper2Controller : ControllerBase
     {
-        private readonly DapperService _dapperService = new DapperService(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
+        private readonly DapperService _dapperService;
+
+        public BlogDapper2Controller(DapperService dapperService)
+        {
+            _dapperService = dapperService;
+        }
 
         [HttpGet]
         public IActionResult GetBlogs()

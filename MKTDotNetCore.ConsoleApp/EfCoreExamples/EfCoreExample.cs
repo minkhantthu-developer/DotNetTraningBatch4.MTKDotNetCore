@@ -9,17 +9,22 @@ namespace MKTDotNetCore.ConsoleApp.EfCoreExamples
 {
     public class EfCoreExample
     {
+        private readonly AppDbContext _context;
+
+        public EfCoreExample(AppDbContext context)
+        {
+            _context = context;
+        }
 
         public void Run()
         {
-            Delete(9);
             Read();
         }
 
         private void Read()
         {
-            AppDbContext db = new AppDbContext();
-            var lst = db.blogs.ToList();
+           
+            var lst =_context.blogs.ToList();
             foreach (var item in lst)
             {
                 Console.WriteLine("BlogId => " + item.BlogId);
@@ -32,8 +37,8 @@ namespace MKTDotNetCore.ConsoleApp.EfCoreExamples
 
         private void Edit(int id)
         {
-            AppDbContext db = new AppDbContext();
-            var item = db.blogs.FirstOrDefault(x => x.BlogId == id);
+           
+            var item =_context.blogs.FirstOrDefault(x => x.BlogId == id);
             if (item is null)
             {
                 Console.WriteLine("No data found");
@@ -47,23 +52,23 @@ namespace MKTDotNetCore.ConsoleApp.EfCoreExamples
 
         private void Create(string title, string author, string content)
         {
-            AppDbContext db = new AppDbContext();
+           
             BlogDto blog = new BlogDto
             {
                 BlogTitle = title,
                 BlogAuthor = author,
                 BlogContent = content
             };
-            db.blogs.Add(blog);
-            int result = db.SaveChanges();
+           _context.blogs.Add(blog);
+            int result =_context.SaveChanges();
             string message = result > 0 ? "Successfully Save" : "Fail to save";
             Console.WriteLine(message);
         }
 
         private void Update(int id, string title, string author, string content)
         {
-            AppDbContext db = new AppDbContext();
-            var item = db.blogs.FirstOrDefault(x => x.BlogId == id);
+           
+            var item =_context.blogs.FirstOrDefault(x => x.BlogId == id);
             if (item is null)
             {
                 Console.WriteLine("No data found");
@@ -72,22 +77,22 @@ namespace MKTDotNetCore.ConsoleApp.EfCoreExamples
             item.BlogTitle = title;
             item.BlogAuthor = author;
             item.BlogContent = content;
-            int result = db.SaveChanges();
+            int result =_context.SaveChanges();
             string message = result > 0 ? "Successfully Update" : "Fail to Update";
             Console.WriteLine(message);
         }
 
         private void Delete(int id)
         {
-            AppDbContext db = new AppDbContext();
-            var item = db.blogs.FirstOrDefault(x => x.BlogId == id);
+           
+            var item =_context.blogs.FirstOrDefault(x => x.BlogId == id);
             if (item is null)
             {
                 Console.WriteLine("No data found");
                 return;
             }
-            db.blogs.Remove(item);
-            int result = db.SaveChanges();
+           _context.blogs.Remove(item);
+            int result =_context.SaveChanges();
             string message = result > 0 ? "Successfully Delete" : "Fail to Delete";
             Console.WriteLine(message);
         }
