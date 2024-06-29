@@ -28,13 +28,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MKTDotNetCore.ConsoleAppRef
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MKTDotNetCore.WindowFormApp", "MKTDotNetCore.WindowFormApp\MKTDotNetCore.WindowFormApp.csproj", "{3F006A7D-3653-4A83-8088-924737827B74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MKTDotNetCore.WinFormsAppSqlInjection", "MKTDotNetCore.WinFormsAppSqlInjection\MKTDotNetCore.WinFormsAppSqlInjection.csproj", "{845EA35D-CB8D-41DF-A5D4-C9F7681369B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MKTDotNetCore.WinFormsAppSqlInjection", "MKTDotNetCore.WinFormsAppSqlInjection\MKTDotNetCore.WinFormsAppSqlInjection.csproj", "{845EA35D-CB8D-41DF-A5D4-C9F7681369B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MKTDotNetCore.NLayerUI", "MKTDotNetCore.NLayerUI\MKTDotNetCore.NLayerUI.csproj", "{20A43FA3-1030-475E-B673-E2C62A5CEC65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MKTDotNetCore.NLayerUI", "MKTDotNetCore.NLayerUI\MKTDotNetCore.NLayerUI.csproj", "{20A43FA3-1030-475E-B673-E2C62A5CEC65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MKTDotNetCore.BusinessLogic", "MKTDotNetCore.BusinessLogic\MKTDotNetCore.BusinessLogic.csproj", "{5A3E2BC2-2647-4452-8F34-EF4504DF6DE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MKTDotNetCore.BusinessLogic", "MKTDotNetCore.BusinessLogic\MKTDotNetCore.BusinessLogic.csproj", "{5A3E2BC2-2647-4452-8F34-EF4504DF6DE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MKTDotNetCore.DataAcess", "MKTDotNetCore.DataAcess\MKTDotNetCore.DataAcess.csproj", "{E6DD179F-76F7-4637-968C-03732430595C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MKTDotNetCore.DataAcess", "MKTDotNetCore.DataAcess\MKTDotNetCore.DataAcess.csproj", "{E6DD179F-76F7-4637-968C-03732430595C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MKTDotNetCore.MinimalApi", "MKTDotNetCore.MinimalApi\MKTDotNetCore.MinimalApi.csproj", "{0AAF1154-D111-43C9-9E8A-D57D76278D95}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -98,6 +100,10 @@ Global
 		{E6DD179F-76F7-4637-968C-03732430595C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6DD179F-76F7-4637-968C-03732430595C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6DD179F-76F7-4637-968C-03732430595C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AAF1154-D111-43C9-9E8A-D57D76278D95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AAF1154-D111-43C9-9E8A-D57D76278D95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AAF1154-D111-43C9-9E8A-D57D76278D95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AAF1154-D111-43C9-9E8A-D57D76278D95}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
