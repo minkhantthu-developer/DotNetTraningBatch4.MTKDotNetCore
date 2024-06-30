@@ -31,7 +31,9 @@ namespace MKTDotNetCore.MinimalApi.Features.Blog
                 int result = await db.SaveChangesAsync();
                 string message = result > 0 ? "Successfully Save" : "Saving Fail";
                 return Results.Ok(message);
-            }).WithName("PostBlog").WithOpenApi();
+            })
+                .WithName("PostBlog")
+                .WithOpenApi();
 
             app.MapPut("api/Blog/{id}", async (AppDbContext db, int id, BlogModel blog) =>
             {
@@ -44,8 +46,9 @@ namespace MKTDotNetCore.MinimalApi.Features.Blog
                 int result = await db.SaveChangesAsync();
                 string message = result > 0 ? "Successfully Update" : "Updating Fail";
                 return Results.Ok(message);
-            }).WithName("PutBlog")
-            .WithOpenApi();
+            })
+                .WithName("PutBlog")
+                .WithOpenApi();
 
             app.MapPatch("api/Blog/{id}", async (AppDbContext db, int id, BlogModel blog) =>
             {
@@ -67,7 +70,8 @@ namespace MKTDotNetCore.MinimalApi.Features.Blog
                 int result = await db.SaveChangesAsync();
                 string message = result > 0 ? "Successfully Update" : "Updating Fail";
                 return Results.Ok(message);
-            }).WithName("Patch")
+            })
+                .WithName("Patch")
                 .WithOpenApi();
 
             app.MapDelete("api/Blog/{id}", async (AppDbContext db, int id) =>
@@ -78,8 +82,9 @@ namespace MKTDotNetCore.MinimalApi.Features.Blog
                 int result = await db.SaveChangesAsync();
                 string message = result > 0 ? "Successfully Delete" : "Deleting Fail";
                 return Results.Ok(message);
-            }).WithName("DeleteBlog")
-            .WithOpenApi();
+            })
+                .WithName("DeleteBlog")
+                .WithOpenApi();
         }
     }
 }
