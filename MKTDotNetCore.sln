@@ -38,7 +38,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MKTDotNetCore.DataAcess", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MKTDotNetCore.MinimalApi", "MKTDotNetCore.MinimalApi\MKTDotNetCore.MinimalApi.csproj", "{0AAF1154-D111-43C9-9E8A-D57D76278D95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MKTDotNetCore.MVC", "MKTDotNetCore.MVC\MKTDotNetCore.MVC.csproj", "{94D5E3F4-4184-4E8D-9C3F-852CDF1ADE76}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MKTDotNetCore.MVC", "MKTDotNetCore.MVC\MKTDotNetCore.MVC.csproj", "{94D5E3F4-4184-4E8D-9C3F-852CDF1ADE76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MKTDotNetCore.MVCApp2", "MKTDotNetCore.MVCApp2\MKTDotNetCore.MVCApp2.csproj", "{62936BFB-6BB5-4D36-9526-E2F0B0A81FDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -110,6 +112,10 @@ Global
 		{94D5E3F4-4184-4E8D-9C3F-852CDF1ADE76}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94D5E3F4-4184-4E8D-9C3F-852CDF1ADE76}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94D5E3F4-4184-4E8D-9C3F-852CDF1ADE76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62936BFB-6BB5-4D36-9526-E2F0B0A81FDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62936BFB-6BB5-4D36-9526-E2F0B0A81FDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62936BFB-6BB5-4D36-9526-E2F0B0A81FDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62936BFB-6BB5-4D36-9526-E2F0B0A81FDC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
