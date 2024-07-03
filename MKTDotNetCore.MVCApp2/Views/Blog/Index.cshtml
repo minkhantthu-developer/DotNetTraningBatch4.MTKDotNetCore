@@ -23,9 +23,9 @@
                     <a class="btn btn-warning" href="/Blog/Edit/@item.BlogId">
                         Edit
                     </a>
-                    <a class="btn btn-danger" href="/Blog/Delete/@item.BlogId">
+                    <button type="button" class="btn btn-danger btn-delete" data-blog-id="@item.BlogId">
                         Delete
-                    </a>
+                    </button>
                 </td>
                 <td>@(++count)</td>
                 <td>@item.BlogTitle</td>
@@ -35,3 +35,37 @@
         }
     </tbody>
 </table>
+
+@section scripts{
+    <script>
+        $('.btn-delete').click(function () {
+            const isConfirm = confirm("Are you sure want to delete?");
+            if (!isConfirm) return;
+
+            const id = $(this).data('blog-id');
+            const _reqModel = {
+                BlogId: id
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: '/Blog/Delete',
+                data: { blog: _reqModel },
+                dataType: "JSON",
+                success: function (result) {
+                    const message = result.Message;
+                    if (!result.IsSuccess) {
+                        alert(message);
+                        return;
+                    }
+
+                    alert(message);
+                    location.href = "/Blog/Index";
+                },
+                error: function (xhr, status, error) {
+                    console.log({ xhr, status, error })
+                }
+            });
+        })
+    </script>
+}

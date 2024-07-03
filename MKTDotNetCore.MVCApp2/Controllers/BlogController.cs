@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.BearerToken;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MKTDotNetCore.MVCApp2.Db;
 using MKTDotNetCore.MVCApp2.Models;
@@ -80,20 +81,25 @@ namespace MKTDotNetCore.MVCApp2.Controllers
             return Json(message);
         }
 
-        [HttpGet]
+        [HttpPost]
         [ActionName("Delete")]
-        public async Task<IActionResult> BlogDelete(int id)
+        public async Task<IActionResult> BlogDelete(BlogModel blog)
         {
             var item = await _context.blogs
                 .AsNoTracking()
-                .FirstOrDefaultAsync(x => x.BlogId == id);
+                .FirstOrDefaultAsync(x => x.BlogId == blog.BlogId);
             if (item is null)
             {
                 return Redirect("/Blog");
             }
             _context.blogs.Remove(item);
             int result = await _context.SaveChangesAsync();
-            return Redirect("/Blog");
+            var message = new MessageModel
+            {
+                IsSuccess = result > 0,
+                Message = result > 0 ? "Successfully Delete" : "Deleting Fail"
+            };
+            return Json(message);
         }
 
     }
