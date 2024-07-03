@@ -72,7 +72,12 @@ namespace MKTDotNetCore.MVCApp2.Controllers
             item.BlogContent = requestModel.BlogContent;
             _context.Entry(item).State = EntityState.Modified;
             int result = await _context.SaveChangesAsync();
-            return Redirect("/Blog");
+            var message = new MessageModel
+            {
+                IsSuccess = result > 0,
+                Message = result > 0 ? "Successfully Update" : "Updating Fail"
+            };
+            return Json(message);
         }
 
         [HttpGet]
