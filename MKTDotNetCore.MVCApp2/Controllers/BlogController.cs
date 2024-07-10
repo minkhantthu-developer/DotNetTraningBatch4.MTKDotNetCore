@@ -18,6 +18,7 @@ namespace MKTDotNetCore.MVCApp2.Controllers
         public async Task<IActionResult> Index()
         {
             var lst = await _context.blogs
+                      .OrderByDescending(x=>x.BlogId)
                       .AsNoTracking()
                       .ToListAsync();
             return View(lst);
