@@ -1,10 +1,15 @@
 using Serilog;
+using Serilog.Sinks.MSSqlServer;
 
 string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "logs/MKTDotNetCore.MVCChartApp.txt");
 
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
     .WriteTo.File(filePath, rollingInterval: RollingInterval.Hour)
+    .WriteTo
+    .MSSqlServer(
+        connectionString: "Server=LAPTOP-TTIU8JF8;Database=TestDB;User ID=sa;Password=Minkhantthu3367;TrustServerCertificate=True;",
+        sinkOptions: new MSSqlServerSinkOptions { TableName = "LogEvents",AutoCreateSqlTable=true })
     .CreateLogger();
 
 try
