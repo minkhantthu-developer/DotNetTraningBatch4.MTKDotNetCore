@@ -44,7 +44,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MKTDotNetCore.MVCApp2", "MK
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MKTDotNetCore.MVCChartApp", "MKTDotNetCore.MVCChartApp\MKTDotNetCore.MVCChartApp.csproj", "{3E1DE2B3-49A4-4123-97B0-1F552DAB53CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MKTDotNetCore.ConsoleAppLogging", "MKTDotNetCore.ConsoleAppLogging\MKTDotNetCore.ConsoleAppLogging.csproj", "{F9478563-4661-4A74-B733-8490C8F6D9F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MKTDotNetCore.ConsoleAppLogging", "MKTDotNetCore.ConsoleAppLogging\MKTDotNetCore.ConsoleAppLogging.csproj", "{F9478563-4661-4A74-B733-8490C8F6D9F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MKTDotNetCore.RealtimeChatApp", "MKTDotNetCore.RealtimeChatApp\MKTDotNetCore.RealtimeChatApp.csproj", "{4E1253A7-F840-4FC1-98CD-55288B21BD79}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -128,6 +130,10 @@ Global
 		{F9478563-4661-4A74-B733-8490C8F6D9F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9478563-4661-4A74-B733-8490C8F6D9F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9478563-4661-4A74-B733-8490C8F6D9F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E1253A7-F840-4FC1-98CD-55288B21BD79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E1253A7-F840-4FC1-98CD-55288B21BD79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E1253A7-F840-4FC1-98CD-55288B21BD79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E1253A7-F840-4FC1-98CD-55288B21BD79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
